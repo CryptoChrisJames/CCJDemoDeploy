@@ -1,0 +1,12 @@
+[submodule "LNCWebApp"]
+	path = LNCWebApp
+	url = git@github.com:ObsidianTech/LNCWebApp.git
+[submodule "SSDemo"]
+	path = SSDemo
+	url = git@github.com:ObsidianTech/SSDemo.git
+[submodule "NuRenPivot"]
+	path = NuRenPivot
+	url = git@github.com:ObsidianTech/NuRenPivot.git
+[submodule "HOTCLegacy"]
+	path = HOTCLegacy
+	url = git@github.com:ObsidianTech/HOTCLegacy.git

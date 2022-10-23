@@ -1,0 +1,23 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  hotc:
+    container_name: hotc
+    build:
+      context: ./HOTCLegacy
+    ports:
+      - "8001:80"
+  ss:
+    container_name: ss
+    build: 
+      context: ./SSDemo/SSDemo
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+      - "8002:80"
+    depends_on:
+      - sql
+  sql:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "DEMOS123"
+      ACCEPT_EULA: "Y"

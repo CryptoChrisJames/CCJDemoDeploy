@@ -8,7 +8,7 @@ services:
       - "8001:80"
   ss:
     container_name: ss
-    build: 
+    build:
       context: ./SSDemo/SSDemo
     environment:
       - ASPNETCORE_ENVIRONMENT=Production

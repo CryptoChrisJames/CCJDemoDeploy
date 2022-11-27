@@ -20,7 +20,7 @@ services:
   sql:
     image: "mcr.microsoft.com/mssql/server"
     environment:
-      SA_PASSWORD: "DEMOS123"
+      MSSQL_SA_PASSWORD: "Demos123!"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"

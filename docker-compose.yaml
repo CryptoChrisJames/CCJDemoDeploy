@@ -6,41 +6,33 @@ services:
       context: ./HOTCLegacy
     ports:
       - "8001:80"
-  nuren:
-    container_name: nuren
+  ss:
+    container_name: ss
     build:
-      context: ./NuRenPivot/siteV2
+      context: ./SSDemo
     environment:
-      - VUE_APP_ENVIRONMENT=prod
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:80
     ports:
-      - "8004:80"
-  # ss:
-  #   container_name: ss
-  #   build:
-  #     context: ./SSDemo
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Production
-  #     - ASPNETCORE_URLS=http://*:80
-  #   ports:
-  #     - "8002:80"
-  #   depends_on:
-  #     - sql
-  # lnc:
-  #   container_name: lnc
-  #   build:
-  #     context: ./LNCWebApp
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Production
-  #     - ASPNETCORE_URLS=http://*:80
-  #   ports:
-  #     - "8003:80"
-  #   depends_on:
-  #     - sql
-  # sql:
-  #   image: "mcr.microsoft.com/mssql/server"
-  #   environment:
-  #     MSSQL_SA_PASSWORD: "Demos123!"
-  #     ACCEPT_EULA: "Y"
-  #     MSSQL_PID: "Express"
-  #   ports:
-  #     - "1433:1433"
+      - "8002:80"
+    depends_on:
+      - sql
+  lnc:
+    container_name: lnc
+    build:
+      context: ./LNCWebApp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:80
+    ports:
+      - "8003:80"
+    depends_on:
+      - sql
+  sql:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      MSSQL_SA_PASSWORD: "Demos123!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"

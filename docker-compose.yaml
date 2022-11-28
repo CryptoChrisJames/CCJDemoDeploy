@@ -17,6 +17,17 @@ services:
       - "8002:80"
     depends_on:
       - sql
+  lnc:
+    container_name: lnc
+    build:
+      context: ./LNCWebApp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:80
+    ports:
+      - "8003:80"
+    depends_on:
+      - sql
   sql:
     image: "mcr.microsoft.com/mssql/server"
     environment:

@@ -1,44 +1,38 @@
 version: "3.9"  # optional since v1.27.0
 services:
-  rp:
-    container_name: rp
-    build:
-      context: ./nginx
-    ports:
-      - "8000:80"
   hotc:
     container_name: hotc
     build:
       context: ./HOTCLegacy
     ports:
       - "8001:80"
-  # ss:
-  #   container_name: ss
-  #   build:
-  #     context: ./SSDemo
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Production
-  #     - ASPNETCORE_URLS=http://*:80
-  #   ports:
-  #     - "8002:80"
-  #   depends_on:
-  #     - sql
-  # lnc:
-  #   container_name: lnc
-  #   build:
-  #     context: ./LNCWebApp
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Production
-  #     - ASPNETCORE_URLS=http://*:80
-  #   ports:
-  #     - "8003:80"
-  #   depends_on:
-  #     - sql
-  # sql:
-  #   image: "mcr.microsoft.com/mssql/server"
-  #   environment:
-  #     MSSQL_SA_PASSWORD: "Demos123!"
-  #     ACCEPT_EULA: "Y"
-  #     MSSQL_PID: "Express"
-  #   ports:
-  #     - "1433:1433"
+  ss:
+    container_name: ss
+    build:
+      context: ./SSDemo
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:80
+    ports:
+      - "8002:80"
+    depends_on:
+      - sql
+  lnc:
+    container_name: lnc
+    build:
+      context: ./LNCWebApp
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://*:80
+    ports:
+      - "8003:80"
+    depends_on:
+      - sql
+  sql:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      MSSQL_SA_PASSWORD: "Demos123!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"

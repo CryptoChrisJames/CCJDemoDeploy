@@ -1,11 +1,11 @@
 version: "3.9"  # optional since v1.27.0
 services:
-  rp:
-    container_name: rp
-    build:
-      context: ./nginx
-    ports:
-      - "80:80"
+  # rp:
+  #   container_name: rp
+  #   build:
+  #     context: ./nginx
+  #   ports:
+  #     - "80:80"
   hotc:
     container_name: hotc
     build:

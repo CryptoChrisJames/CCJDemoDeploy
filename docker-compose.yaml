@@ -27,8 +27,6 @@ services:
       - "8002:80"
     depends_on:
       - sql
-    networks:
-      - demos
   lnc:
     container_name: lnc
     build:
@@ -40,8 +38,6 @@ services:
       - "8003:80"
     depends_on:
       - sql
-    networks:
-      - demos
   sql:
     image: "mcr.microsoft.com/mssql/server"
     environment:

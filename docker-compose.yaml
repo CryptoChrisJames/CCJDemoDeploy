@@ -6,12 +6,16 @@ services:
       context: ./nginx
     ports:
       - "80:80"
+    networks:
+      - demos
   hotc:
     container_name: hotc
     build:
       context: ./HOTCLegacy
     ports:
       - "8001:80"
+    networks:
+      - demos
   ss:
     container_name: ss
     build:
@@ -23,6 +27,8 @@ services:
       - "8002:80"
     depends_on:
       - sql
+    networks:
+      - demos
   lnc:
     container_name: lnc
     build:
@@ -34,6 +40,8 @@ services:
       - "8003:80"
     depends_on:
       - sql
+    networks:
+      - demos
   sql:
     image: "mcr.microsoft.com/mssql/server"
     environment:
@@ -42,3 +50,7 @@ services:
       MSSQL_PID: "Express"
     ports:
       - "1433:1433"
+  
+networks:
+  demos:
+    driver: bridge
